@@ -1,9 +1,7 @@
 import { combineReducers } from "redux";
 import { FETCH_POKEMONS, GET_POKEMONS, ADD_POKEMON, REMOVE_POKEMON } from "./actions";
 
-const allPokemonInitialState = {
-    pokemons: []
-};
+const allPokemonInitialState = {};
 
 const myPokemonInitialState = {
     pokemons: []
@@ -12,7 +10,11 @@ const myPokemonInitialState = {
 const allPokemonsReducer = (state = allPokemonInitialState, action) => {
     switch (action.type) {
         case FETCH_POKEMONS:
-            return { ...state, pokemons: action.payload };
+            let result = {};
+            action.payload.forEach(pokemon => {
+                result[pokemon.name] = pokemon.url;
+            });
+            return { ...state, ...result };
 
         default:
             return state;
@@ -36,4 +38,4 @@ const myPokemonsReducer = (state = myPokemonInitialState, action) => {
     }
 };
 
-export default combineReducers({ all: allPokemonsReducer, mine: myPokemonsReducer });
+export default combineReducers({ allPokemons: allPokemonsReducer, mine: myPokemonsReducer });

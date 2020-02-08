@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchPokemonDetails } from "../store/actions";
 import axios from "axios";
 
 function PokemonDetails(props) {
@@ -47,4 +46,4 @@ const mapStateToProps = state => ({
     myPokemons: state.mine.pokemons
 });
 
-export default connect(mapStateToProps, { fetchPokemonDetails })(PokemonDetails);
+export default connect(mapStateToProps, {})(PokemonDetails);

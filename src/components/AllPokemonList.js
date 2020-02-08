@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchPokemons } from "../store/actions";
@@ -10,19 +11,17 @@ function AllPokemonList(props) {
         props.fetchPokemons();
     }, []);
 
-    console.log("allPokemons :", allPokemons);
-    console.log("myPokemons :", myPokemons);
 
     return (
         <div>
             {allPokemons &&
-                allPokemons.map((pokemon, index) => {
-                    const count = myPokemons[pokemon.name]
-                        ? Object.keys(myPokemons[pokemon.name])
-                        : 0;
+                Object.keys(allPokemons).map((key, index) => {
+                    const count = myPokemons[key] ? Object.keys(myPokemons[key]) : 0;
                     return (
                         <div key={index}>
-                            {pokemon.name} ({count})
+                            <Link to={`/pokemon/${key}`}>
+                                {key} ({count})
+                            </Link>
                         </div>
                     );
                 })}
@@ -36,7 +35,7 @@ AllPokemonList.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    allPokemons: state.all.pokemons,
+    allPokemons: state.allPokemons,
     myPokemons: state.mine.pokemons
 });
 

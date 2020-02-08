@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Provider } from "react-redux";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import store from "./store";
 
-import logo from "./logo.svg";
 import "./App.css";
 
 import AllPokemonList from "./components/AllPokemonList";
@@ -17,9 +16,19 @@ function App() {
 
     return (
         <Provider store={store}>
-            <div>
-                <AllPokemonList />
-            </div>
+            <Router>
+                <Switch>
+                    <Route path="/mylist">
+                        <MyPokemonList />
+                    </Route>
+                    <Route path="/pokemon/:id">
+                        <PokemonDetails />
+                    </Route>
+                    <Route path="/">
+                        <AllPokemonList />
+                    </Route>
+                </Switch>
+            </Router>
         </Provider>
     );
 }

@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { fetchPokemons } from "../store/actions";
 
 function MyPokemonList(props) {
     return (
@@ -8,4 +11,9 @@ function MyPokemonList(props) {
     );
 }
 
-export default MyPokemonList;
+const mapStateToProps = state => ({
+    allPokemons: state.allPokemons,
+    myPokemons: state.mine.pokemons
+});
+
+export default connect(mapStateToProps, { fetchPokemons })(MyPokemonList);

@@ -26,7 +26,7 @@ function AllPokemonList(props) {
                     return (
                         <div key={index} className="all-entry">
                             <Link to={`/pokemon/${key}`}>
-                                <span className="all-entry__name">{key.toUpperCase()}</span>
+                                <span className="all-entry__name">{key}</span>
                             </Link>
                             <div className="all-entry__count">
                                 <img

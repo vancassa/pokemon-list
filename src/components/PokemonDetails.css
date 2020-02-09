@@ -194,13 +194,17 @@ main {
     grid-template-rows: 1fr 1fr 1fr 4fr;
 }
 
+.catch-btn-container {
+    margin-top: 50px;
+
+}
 .catch-btn {
     background-color: #ffb16f;
     display: inline-block;
     border: solid 1px pink;
-    padding: 0.75rem 0.5rem;
+    padding: 1rem 0.5rem;
     text-transform: uppercase;
-    font-size: 0.6rem;
+    font-size: 1rem;
     border-radius: 10px;
     box-shadow: 0px -3px 0px 4px rgb(112, 140, 145), 0px -2px 2px 1px #ffb16f inset,
         0px 3px 0px 1px white inset;
@@ -208,6 +212,8 @@ main {
 
     text-shadow: 1px 1px 2px var(--nav-btn-color);
     z-index: 1;
+
+    width: 100%;
 }
 
 .catch-btn.btn-active {

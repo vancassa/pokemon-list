@@ -14,6 +14,7 @@ function PokemonDetails(props) {
     const { id } = useParams();
 
     const [pokemon, setPokemon] = useState();
+    const [isCatching, setIsCatching] = useState(false);
     const [desc, setDescription] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => setIsModalOpen(true);
@@ -35,15 +36,23 @@ function PokemonDetails(props) {
     }, []);
 
     const catchPokemon = () => {
-        if (Math.random() < 0.5) {
-            // Add to my pokemon
-            console.log("success");
-            openModal();
-            // Hide button
-        } else {
-            // Show try again
-            console.log("failed");
-        }
+        setIsCatching(true);
+
+        setTimeout(() => {
+            
+            if (Math.random() < 0.5) {
+                // Add to my pokemon
+                console.log("success");
+                openModal();
+                // Hide button
+            } else {
+                // Show try again
+                console.log("failed");
+            }
+
+            setIsCatching(false);
+
+        }, 2000);
     };
 
     const [nickname, setNickname] = useState("");
@@ -104,10 +113,17 @@ function PokemonDetails(props) {
                                 </div>
                             </div>
                         </div>
+                        <div className="catch-btn-container">
+                            <button
+                                type="button"
+                                className="catch-btn btn-active"
+                                disabled={isCatching}
+                                onClick={catchPokemon}
+                            >
+                                {isCatching ? 'Trying to catch...' : 'Catch!'}
+                            </button>
+                        </div>
                     </main>
-                    <button type="button" className="catch-btn btn-active" onClick={catchPokemon}>
-                        Catch
-                    </button>
                 </div>
             )}
         </div>

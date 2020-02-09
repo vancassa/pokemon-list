@@ -5,11 +5,17 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { addPokemon } from "../store/actions";
 
+import Modal from "./Modal";
+
 function PokemonDetails(props) {
     const { allPokemons } = props;
     const { id } = useParams();
 
     const [pokemon, setPokemon] = useState();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
     const pokemonUrl = allPokemons[id];
 
     useEffect(() => {
@@ -23,6 +29,8 @@ function PokemonDetails(props) {
             // Add to my pokemon
             props.addPokemon(pokemon.name);
             console.log("success");
+
+            openModal();
             // Hide button
         } else {
             // Show try again
@@ -34,6 +42,7 @@ function PokemonDetails(props) {
         <div>
             {pokemon && (
                 <div>
+                    <Modal isOpen={isModalOpen} close={closeModal} />
                     <div>{pokemon.name}</div>
                     <div>
                         <img src={pokemon.sprites.front_default} alt={pokemon.name} />

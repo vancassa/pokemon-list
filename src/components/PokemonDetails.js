@@ -62,7 +62,7 @@ function PokemonDetails(props) {
     };
 
     return (
-        <div className="container">
+        <div className="container" style={{ overflow: isModalOpen ? "hidden" : "visible" }}>
             {pokemon && (
                 <div>
                     <Modal isOpen={isModalOpen}>

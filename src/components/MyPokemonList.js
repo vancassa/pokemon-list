@@ -9,38 +9,60 @@ import "./MyPokemonList.css";
 function MyPokemonList(props) {
     console.log("props.myPokemons :", props.myPokemons);
     const { myPokemons } = props;
+    const { pokemons } = myPokemons;
 
-    const releasePokemon = pokemon => {
-        console.log("releasing ", pokemon);
+    const releasePokemon = (pokemon, nickname) => {
+        console.log("releasing ", pokemon, nickname);
     };
     return (
         <div className="my-pokemon-container">
-            {myPokemons && myPokemons.length > 0 ? (
+            {pokemons && Object.keys(pokemons).length > 0 ? (
                 <div>
-                    <div>You have {myPokemons.length} pokemon(s).</div>
+                    <div>You have {myPokemons.total} pokemon(s).</div>
                     <Link to="/">Catch more pokemons!</Link>
                     <div className="my-pokemon_list">
-                        {myPokemons.map((pokemon, index) => (
-                            <div key={index} className="my-pokemon_entry">
-                                <div className="my-pokemon_entry_name">
-                                    {pokemon.nickname ? (
-                                        <span>
-                                            {pokemon.nickname} ({pokemon.name})
-                                        </span>
-                                    ) : (
-                                        <span>{pokemon.name}</span>
-                                    )}
+                        {Object.keys(pokemons).map((pokemonKey, index) => {
+                            return (
+                                <div>
+                                    {pokemons[pokemonKey].map(nickname => {
+                                        return (
+                                            <div key={index} className="my-pokemon_entry">
+                                                <div className="my-pokemon_entry_name">
+                                                    {nickname ? (
+                                                        <span>
+                                                            {nickname} ({pokemonKey})
+                                                        </span>
+                                                    ) : (
+                                                        <span>{pokemonKey}</span>
+                                                    )}
+                                                </div>
+                                                <div className="my-pokemon-entry_release">
+                                                    <button
+                                                        onClick={() =>
+                                                            releasePokemon(pokemonKey, nickname)
+                                                        }
+                                                    >
+                                                        Release
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
                                 </div>
-                                <div className="my-pokemon-entry_release">
-                                    <button onClick={() => releasePokemon(pokemon)}>Release</button>
-                                </div>
-                            </div>
-                        ))}
+                            );
+
+                            // pokemon.map(nickname => {
+                            //     console.log('nickname :', nickname);
+                            // })
+                        })}
                     </div>
                 </div>
             ) : (
                 <div className="my-pokemon_empty">
-                    You don't have any pokemon yet. <Link to="/" className="my-pokemon_empty_link">Go catch some!</Link>
+                    You don't have any pokemon yet.{" "}
+                    <Link to="/" className="my-pokemon_empty_link">
+                        Go catch some!
+                    </Link>
                 </div>
             )}
         </div>
@@ -49,7 +71,7 @@ function MyPokemonList(props) {
 
 const mapStateToProps = state => ({
     allPokemons: state.allPokemons,
-    myPokemons: state.mine.pokemons
+    myPokemons: state.mine
 });
 
 export default connect(mapStateToProps, { fetchPokemons })(MyPokemonList);

@@ -5,16 +5,31 @@ function Modal(props) {
 
     const containerStyle = {
         zIndex: 999,
-        backgroundColor: "yellow",
         position: "absolute",
         top: 0,
         left: 0,
-        margin: 100,
-        width: "80vw",
-        height: "80vh"
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "rgba(100, 100, 100, 3)"
     };
 
-    if (isOpen) return <div style={containerStyle}>{children}</div>;
+    const modalStyle = {
+        backgroundColor: "turquoise",
+        padding: 50,
+        margin: 50,
+        borderRadius: "10px",
+        border: "solid 3px green"
+    };
+
+    if (isOpen)
+        return (
+            <div style={containerStyle}>
+                <div style={modalStyle}>{children}</div>
+            </div>
+        );
     else return null;
 }
 

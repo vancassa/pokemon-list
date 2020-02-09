@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
 import { addPokemon } from "../store/actions";
+import { capitalizeFirstChar } from "../helpers";
 
 import "./PokemonDetails.css";
 import Modal from "./Modal";
@@ -15,6 +16,7 @@ function PokemonDetails(props) {
 
     const [pokemon, setPokemon] = useState();
     const [isCatching, setIsCatching] = useState(false);
+    const [isFailed, setIsFailed] = useState(false);
     const [desc, setDescription] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => setIsModalOpen(true);
@@ -39,20 +41,15 @@ function PokemonDetails(props) {
         setIsCatching(true);
 
         setTimeout(() => {
-            
             if (Math.random() < 0.5) {
-                // Add to my pokemon
-                console.log("success");
+                setIsFailed(false);
                 openModal();
-                // Hide button
             } else {
-                // Show try again
-                console.log("failed");
+                setIsFailed(true);
             }
 
             setIsCatching(false);
-
-        }, 2000);
+        }, 1000);
     };
 
     const [nickname, setNickname] = useState("");
@@ -69,14 +66,27 @@ function PokemonDetails(props) {
             {pokemon && (
                 <div>
                     <Modal isOpen={isModalOpen}>
-                        <div>Nickname</div>
-                        <input
-                            type="text"
-                            name="nickname"
-                            value={nickname}
-                            onChange={handleInputChange}
-                        ></input>
-                        <button onClick={savePokemon}>Save nickname</button>
+                        <div className="success-modal">
+                            <h1 className="success-modal__title">
+                                You caught a {pokemon.name.toUpperCase()}!
+                            </h1>
+                            <img
+                                src={pokemon.sprites.front_default}
+                                alt={pokemon.name}
+                                className="success-modal__image"
+                            />
+                            <span>Give it a nickname?</span>
+                            <input
+                                type="text"
+                                name="nickname"
+                                value={nickname}
+                                onChange={handleInputChange}
+                                className="success-modal__input"
+                            ></input>
+                            <button onClick={savePokemon} className="success-modal__btn">
+                                Save nickname
+                            </button>
+                        </div>
                     </Modal>
                     <Link to="/">Back</Link>
 
@@ -104,8 +114,16 @@ function PokemonDetails(props) {
                             </div>
 
                             <div className="profile_content">
-                                <span>HT 172</span>
-                                <span>WT 100</span>
+                                {pokemon.moves &&
+                                    pokemon.moves
+                                        .slice(0, Math.min(3, pokemon.moves.length))
+                                        .map((move, index) => {
+                                            return (
+                                                <div key={index}>
+                                                    {capitalizeFirstChar(move.move.name)}
+                                                </div>
+                                            );
+                                        })}
                             </div>
                             <div className="description">
                                 <div className="description_box">
@@ -119,8 +137,13 @@ function PokemonDetails(props) {
                                 className="catch-btn btn-active"
                                 disabled={isCatching}
                                 onClick={catchPokemon}
+                                style={{ color: isFailed && !isCatching && "crimson" }}
                             >
-                                {isCatching ? 'Trying to catch...' : 'Catch!'}
+                                {isCatching
+                                    ? "Trying to catch..."
+                                    : isFailed
+                                    ? "Failed. Try again!"
+                                    : "Catch!"}
                             </button>
                         </div>
                     </main>
@@ -132,7 +155,7 @@ function PokemonDetails(props) {
 
 const mapStateToProps = state => ({
     allPokemons: state.allPokemons,
-    myPokemons: state.mine.pokemons
+    myPokemons: state.mine
 });
 
 export default connect(mapStateToProps, { addPokemon })(PokemonDetails);

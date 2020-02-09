@@ -10,9 +10,7 @@ import {
 
 const allPokemonInitialState = { page: 0, pokemons: {} };
 
-const myPokemonInitialState = {
-    pokemons: []
-};
+const myPokemonInitialState = { total: 0, pokemons: {} };
 
 const initialDataReducer = (state = false, action) => {
     switch (action.type) {
@@ -47,8 +45,27 @@ const myPokemonsReducer = (state = myPokemonInitialState, action) => {
             return { ...state };
 
         case ADD_POKEMON:
-            console.log("add poke ", action.payload);
-            return { ...state, pokemons: [...state.pokemons, action.payload] };
+            if (state.pokemons[action.payload.name]) {
+                return {
+                    ...state,
+                    total: state.total + 1,
+                    pokemons: {
+                        ...state.pokemons,
+                        [action.payload.name]: [
+                            ...state.pokemons[action.payload.name],
+                            action.payload.nickname
+                        ]
+                    }
+                };
+            } else
+                return {
+                    ...state,
+                    total: state.total + 1,
+                    pokemons: {
+                        ...state.pokemons,
+                        [action.payload.name]: [action.payload.nickname]
+                    }
+                };
 
         case REMOVE_POKEMON:
             console.log("remove my pokemon");

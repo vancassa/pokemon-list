@@ -1,4 +1,3 @@
-
 button {
     border: none;
     outline: none;
@@ -180,7 +179,6 @@ main {
     margin: 0;
 }
 
-
 .info-container {
     height: 100%;
     display: flex;
@@ -196,7 +194,6 @@ main {
 
 .catch-btn-container {
     margin-top: 50px;
-
 }
 .catch-btn {
     background-color: #ffb16f;
@@ -225,5 +222,31 @@ main {
 
 .catch-btn:focus {
     outline: 3px dashed #151f76;
+}
 
+.success-modal {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.success-modal__title {
+    font-size: 0.875rem;
+    line-height: 1.5625rem;
+}
+
+.success-modal__image {
+    display: block;
+}
+.success-modal__input {
+    margin-top: 20px;
+    height: 20px;
+    width: 100%;
+}
+
+.success-modal__btn {
+    margin-top: 20px;
+    padding: 20px 10px;
+    box-shadow: 1px 1px 1px 1px rgb(112, 140, 145);
 }

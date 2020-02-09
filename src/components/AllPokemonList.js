@@ -33,7 +33,7 @@ function AllPokemonList(props) {
     return (
         <div className="allpoke-container">
             <Link to={`/mylist`} className="allpoke-link">
-                My pokemons ({myPokemons.length})
+                My pokemons ({myPokemons.total})
                 <img src={icon} alt="Bag icon" className="allpoke-link__icon" />
             </Link>
 
@@ -41,7 +41,7 @@ function AllPokemonList(props) {
 
             {pokemons &&
                 Object.keys(pokemons).map((key, index) => {
-                    const count = myPokemons[key] ? Object.keys(myPokemons[key]) : 0;
+                    const count = myPokemons.pokemons[key] ? myPokemons.pokemons[key].length : 0;
                     return (
                         <div key={index} className="allpoke-entry">
                             <Link to={`/pokemon/${key}`}>
@@ -70,7 +70,7 @@ AllPokemonList.propTypes = {
 
 const mapStateToProps = state => ({
     allPokemons: state.allPokemons,
-    myPokemons: state.mine.pokemons
+    myPokemons: state.mine
 });
 
 export default connect(mapStateToProps, { fetchPokemons })(AllPokemonList);

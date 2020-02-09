@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchPokemons } from "../store/actions";
+import { fetchPokemons, setInitialData } from "../store/actions";
 
 function AllPokemonList(props) {
+    const dispatch = useDispatch();
     const { allPokemons, myPokemons } = props;
 
     useEffect(() => {
+        dispatch(setInitialData());
         props.fetchPokemons();
     }, []);
-
 
     return (
         <div>

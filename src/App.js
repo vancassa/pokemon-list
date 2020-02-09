@@ -8,25 +8,26 @@ import "./App.css";
 import AllPokemonList from "./components/AllPokemonList";
 import MyPokemonList from "./components/MyPokemonList";
 import PokemonDetails from "./components/PokemonDetails";
+import AuthorizedRoute from "./components/AuthorizedRoute";
 
 function App() {
-    useEffect(() => {
-        console.log("fetching...");
-    }, []);
+    
 
     return (
         <Provider store={store}>
             <Router>
                 <Switch>
-                    <Route path="/mylist">
-                        <MyPokemonList />
-                    </Route>
-                    <Route path="/pokemon/:id">
-                        <PokemonDetails />
-                    </Route>
-                    <Route path="/">
+                    <Route exact path="/">
                         <AllPokemonList />
                     </Route>
+                    <AuthorizedRoute>
+                        <Route path="/mylist">
+                            <MyPokemonList />
+                        </Route>
+                        <Route path="/pokemon/:id">
+                            <PokemonDetails />
+                        </Route>
+                    </AuthorizedRoute>
                 </Switch>
             </Router>
         </Provider>

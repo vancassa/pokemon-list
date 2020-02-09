@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
+import { addPokemon } from "../store/actions";
 
 function PokemonDetails(props) {
     const { allPokemons } = props;
@@ -18,7 +19,15 @@ function PokemonDetails(props) {
     }, []);
 
     const catchPokemon = () => {
-        console.log("try catch");
+        if (Math.random() < 0.5) {
+            // Add to my pokemon
+            props.addPokemon(pokemon.name);
+            console.log("success");
+            // Hide button
+        } else {
+            // Show try again
+            console.log("failed");
+        }
     };
 
     return (
@@ -46,4 +55,4 @@ const mapStateToProps = state => ({
     myPokemons: state.mine.pokemons
 });
 
-export default connect(mapStateToProps, {})(PokemonDetails);
+export default connect(mapStateToProps, { addPokemon })(PokemonDetails);

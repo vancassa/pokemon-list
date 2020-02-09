@@ -24,10 +24,10 @@ export const getMyPokemons = () => dispatch => {
     });
 };
 
-export const addPokemon = pokemon => dispatch => {
+export const addPokemon = pokemonName => dispatch => {
     dispatch({
         type: ADD_POKEMON,
-        payload: pokemon
+        payload: pokemonName
     });
 };
 

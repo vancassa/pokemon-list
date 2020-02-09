@@ -1,0 +1,26 @@
+.all-container {
+    
+}
+
+.all-title {
+    text-align: center;
+}
+.all-entry {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.all-entry__name {
+}
+
+.all-entry__count {
+    display: flex;
+    align-items: center;
+}
+
+.all-entry__icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}

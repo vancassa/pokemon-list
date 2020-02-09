@@ -27,9 +27,7 @@ function PokemonDetails(props) {
     const catchPokemon = () => {
         if (Math.random() < 0.5) {
             // Add to my pokemon
-            props.addPokemon(pokemon.name);
             console.log("success");
-
             openModal();
             // Hide button
         } else {
@@ -42,7 +40,7 @@ function PokemonDetails(props) {
     const handleInputChange = e => setNickname(e.target.value);
     const savePokemon = () => {
         console.log("saving ", nickname);
-        // savePokemon(nickname);
+        props.addPokemon({ name: pokemon.name, nickname: nickname });
         closeModal();
     };
 
@@ -58,7 +56,7 @@ function PokemonDetails(props) {
                             value={nickname}
                             onChange={handleInputChange}
                         ></input>
-                        <button onClick={savePokemon}>Close modal</button>
+                        <button onClick={savePokemon}>Save nickname</button>
                     </Modal>
                     <div>{pokemon.name}</div>
                     <div>

@@ -11,25 +11,25 @@ import PokemonDetails from "./components/PokemonDetails";
 import AuthorizedRoute from "./components/AuthorizedRoute";
 
 function App() {
-    
-
     return (
         <Provider store={store}>
-            <Router>
-                <Switch>
-                    <Route exact path="/">
-                        <AllPokemonList />
-                    </Route>
-                    <AuthorizedRoute>
-                        <Route path="/mylist">
-                            <MyPokemonList />
+            <div className="app">
+                <Router>
+                    <Switch>
+                        <Route exact path="/">
+                            <AllPokemonList />
                         </Route>
-                        <Route path="/pokemon/:id">
-                            <PokemonDetails />
-                        </Route>
-                    </AuthorizedRoute>
-                </Switch>
-            </Router>
+                        <AuthorizedRoute>
+                            <Route path="/mylist">
+                                <MyPokemonList />
+                            </Route>
+                            <Route path="/pokemon/:id">
+                                <PokemonDetails />
+                            </Route>
+                        </AuthorizedRoute>
+                    </Switch>
+                </Router>
+            </div>
         </Provider>
     );
 }

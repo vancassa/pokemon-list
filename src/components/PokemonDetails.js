@@ -24,14 +24,12 @@ function PokemonDetails(props) {
         axios.get(pokemonUrl).then(res => {
             setPokemon(res.data);
 
-            axios
-                .get(`https://pokeapi.co/api/v2/pokemon-species/${res.data.id}/`)
-                .then(response => {
-                    const filterEnglish = response.data.flavor_text_entries.filter(
-                        entry => entry.language.name === "en"
-                    );
-                    setDescription(filterEnglish[0].flavor_text);
-                });
+            axios.get(res.data.species.url).then(res2 => {
+                const filterEnglish = res2.data.flavor_text_entries.filter(
+                    entry => entry.language.name === "en"
+                );
+                setDescription(filterEnglish[0].flavor_text);
+            });
         });
     }, []);
 

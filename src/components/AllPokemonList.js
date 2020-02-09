@@ -22,8 +22,8 @@ function AllPokemonList(props) {
 
     window.onscroll = debounce(() => {
         if (
-            window.innerHeight + document.documentElement.scrollTop ===
-            document.documentElement.scrollHeight
+            window.innerHeight + document.documentElement.scrollTop >
+            document.documentElement.scrollHeight - 200
         ) {
             // Fetch more pokemons
             props.fetchPokemons(page);

@@ -105,7 +105,7 @@ function PokemonDetails(props) {
                                 </div>
                             </div>
 
-                            <div>
+                            <div className="profile_type_container">
                                 {pokemon.types.map((entry, index) => (
                                     <div key={index} className="profile_type">
                                         <span>{entry.type.name}</span>

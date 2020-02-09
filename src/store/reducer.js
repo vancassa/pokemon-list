@@ -68,8 +68,23 @@ const myPokemonsReducer = (state = myPokemonInitialState, action) => {
                 };
 
         case REMOVE_POKEMON:
-            console.log("remove my pokemon");
-            return state;
+            const pokemons = state.pokemons;
+            const idx = pokemons[action.payload.pokemon].findIndex(
+                nickname => nickname === action.payload.nickname
+            );
+
+            pokemons[action.payload.pokemon].splice(idx, 1);
+
+            if (pokemons[action.payload.pokemon].length === 0) {
+                delete pokemons[action.payload.pokemon];
+            }
+
+            return {
+                ...state,
+                total: state.total - 1,
+                pokemons: pokemons
+            };
+
         default:
             return state;
     }

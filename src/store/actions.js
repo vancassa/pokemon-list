@@ -22,7 +22,7 @@ export const getInitialData = () => dispatch => {
 };
 
 export const fetchPokemons = page => dispatch => {
-    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=${50*page}`).then(res => {
+    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=${50 * page}`).then(res => {
         if (res.data.results) {
             let pokemons = {};
             res.data.results.forEach(pokemon => {
@@ -50,9 +50,9 @@ export const addPokemon = pokemonName => dispatch => {
     });
 };
 
-export const removePokemon = id => dispatch => {
+export const removePokemon = (pokemon, nickname) => dispatch => {
     dispatch({
         type: REMOVE_POKEMON,
-        payload: id
+        payload: { pokemon, nickname }
     });
 };

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchPokemons } from "../store/actions";
+import { removePokemon } from "../store/actions";
 
 import "./MyPokemonList.css";
 
@@ -12,7 +12,7 @@ function MyPokemonList(props) {
     const { pokemons } = myPokemons;
 
     const releasePokemon = (pokemon, nickname) => {
-        console.log("releasing ", pokemon, nickname);
+        props.removePokemon(pokemon, nickname);
     };
     return (
         <div className="my-pokemon-container">
@@ -23,10 +23,10 @@ function MyPokemonList(props) {
                     <div className="my-pokemon_list">
                         {Object.keys(pokemons).map((pokemonKey, index) => {
                             return (
-                                <div>
-                                    {pokemons[pokemonKey].map(nickname => {
+                                <div key={index}>
+                                    {pokemons[pokemonKey].map((nickname, idx) => {
                                         return (
-                                            <div key={index} className="my-pokemon_entry">
+                                            <div key={idx} className="my-pokemon_entry">
                                                 <div className="my-pokemon_entry_name">
                                                     {nickname ? (
                                                         <span>
@@ -74,4 +74,4 @@ const mapStateToProps = state => ({
     myPokemons: state.mine
 });
 
-export default connect(mapStateToProps, { fetchPokemons })(MyPokemonList);
+export default connect(mapStateToProps, { removePokemon })(MyPokemonList);

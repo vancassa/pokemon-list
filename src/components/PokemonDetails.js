@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
@@ -9,6 +9,7 @@ import "./PokemonDetails.css";
 import Modal from "./Modal";
 
 function PokemonDetails(props) {
+    const history = useHistory();
     const { allPokemons } = props;
     const { id } = useParams();
 
@@ -48,9 +49,10 @@ function PokemonDetails(props) {
     const [nickname, setNickname] = useState("");
     const handleInputChange = e => setNickname(e.target.value);
     const savePokemon = () => {
-        console.log("saving ", nickname);
+        //TODO: Check if pokemon name & nickname combi exists
         props.addPokemon({ name: pokemon.name, nickname: nickname });
         closeModal();
+        history.push("/mylist");
     };
 
     return (
@@ -71,12 +73,12 @@ function PokemonDetails(props) {
 
                     <main>
                         <div id="info">
-                            <div class="profile_pic">
+                            <div className="profile_pic">
                                 <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                             </div>
-                            <div class="profile_title">
-                                <div class="profile_title_icon"></div>
-                                <div class="profile_title_name">
+                            <div className="profile_title">
+                                <div className="profile_title_icon"></div>
+                                <div className="profile_title_name">
                                     <span>
                                         #{pokemon.id} {pokemon.name}
                                     </span>
@@ -86,24 +88,24 @@ function PokemonDetails(props) {
 
                             <div>
                                 {pokemon.types.map((entry, index) => (
-                                    <div key={index} class="profile_type">
+                                    <div key={index} className="profile_type">
                                         <span>{entry.type.name}</span>
                                     </div>
                                 ))}
                             </div>
 
-                            <div class="profile_content">
+                            <div className="profile_content">
                                 <span>HT 172</span>
                                 <span>WT 100</span>
                             </div>
-                            <div class="description">
-                                <div class="description_box">
+                            <div className="description">
+                                <div className="description_box">
                                     <p>{desc}</p>
                                 </div>
                             </div>
                         </div>
                     </main>
-                    <button type="button" class="catch-btn btn-active" onClick={catchPokemon}>
+                    <button type="button" className="catch-btn btn-active" onClick={catchPokemon}>
                         Catch
                     </button>
                 </div>

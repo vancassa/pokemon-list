@@ -7,6 +7,7 @@ import debounce from "lodash.debounce";
 
 import { fetchPokemons, setInitialData } from "../store/actions";
 import icon from "../assets/pokeball.png";
+import bag from "../assets/rucksack.png";
 
 import "./AllPokemonList.css";
 
@@ -31,19 +32,25 @@ function AllPokemonList(props) {
     }, 100);
 
     return (
-        <div className="all-container">
-            <h1 className="all-title">All Pokemons Available</h1>
+        <div className="allpoke-container">
+            <Link to={`/mylist`} className="allpoke-link">
+                My pokemon list
+                <img src={bag} alt="Bag icon" className="allpoke-link__icon" />
+            </Link>
+
+            <h1 className="allpoke-title">All Pokemons Available</h1>
+
             {pokemons &&
                 Object.keys(pokemons).map((key, index) => {
                     const count = myPokemons[key] ? Object.keys(myPokemons[key]) : 0;
                     return (
-                        <div key={index} className="all-entry">
+                        <div key={index} className="allpoke-entry">
                             <Link to={`/pokemon/${key}`}>
-                                <span className="all-entry__name">{key}</span>
+                                <span className="allpoke-entry__name">{key}</span>
                             </Link>
-                            <div className="all-entry__count">
+                            <div className="allpoke-entry__count">
                                 <img
-                                    className="all-entry__icon"
+                                    className="allpoke-entry__icon"
                                     src={icon}
                                     alt="pokeball"
                                     style={{ width: 20, height: 20 }}

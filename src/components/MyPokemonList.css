@@ -2,6 +2,10 @@
     padding: 20px;
 }
 
+.my-pokemon_title {
+    margin-bottom: 20px;
+}
+
 .my-pokemon_list {
     margin-top: 20px;
 }
@@ -15,10 +19,28 @@
     text-align: center;
 }
 
-.my-pokemon_empty_link {
+.my-pokemon_link {
+    display: block;
     margin: 20px 0;
     padding: 20px;
     background-color: antiquewhite;
     border: solid 1px pink;
     cursor: pointer;
+}
+
+.my-pokemon_entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.my-pokemon_entry_name {
+    word-break: break-word;
+    text-transform: uppercase;
+    line-height: 1rem;
+}
+
+.my-pokemon-entry_release {
+    padding: 10px;
 }

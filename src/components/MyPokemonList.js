@@ -18,8 +18,10 @@ function MyPokemonList(props) {
         <div className="my-pokemon-container">
             {pokemons && Object.keys(pokemons).length > 0 ? (
                 <div>
-                    <div>You have {myPokemons.total} pokemon(s).</div>
-                    <Link to="/">Catch more pokemons!</Link>
+                    <div className="my-pokemon_title">You have {myPokemons.total} pokemon(s).</div>
+                    <Link to="/" className="my-pokemon_link">
+                        Catch more pokemons!
+                    </Link>
                     <div className="my-pokemon_list">
                         {Object.keys(pokemons).map((pokemonKey, index) => {
                             return (
@@ -36,15 +38,14 @@ function MyPokemonList(props) {
                                                         <span>{pokemonKey}</span>
                                                     )}
                                                 </div>
-                                                <div className="my-pokemon-entry_release">
-                                                    <button
-                                                        onClick={() =>
-                                                            releasePokemon(pokemonKey, nickname)
-                                                        }
-                                                    >
-                                                        Release
-                                                    </button>
-                                                </div>
+                                                <button
+                                                    className="my-pokemon-entry_release"
+                                                    onClick={() =>
+                                                        releasePokemon(pokemonKey, nickname)
+                                                    }
+                                                >
+                                                    Release
+                                                </button>
                                             </div>
                                         );
                                     })}
@@ -60,7 +61,7 @@ function MyPokemonList(props) {
             ) : (
                 <div className="my-pokemon_empty">
                     You don't have any pokemon yet.{" "}
-                    <Link to="/" className="my-pokemon_empty_link">
+                    <Link to="/" className="my-pokemon_link">
                         Go catch some!
                     </Link>
                 </div>

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Modal(props) {
-    const { isOpen, close } = props;
+    const { isOpen, children } = props;
 
     const containerStyle = {
         zIndex: 999,
@@ -14,13 +14,7 @@ function Modal(props) {
         height: "80vh"
     };
 
-    if (isOpen)
-        return (
-            <div style={containerStyle}>
-                <div>Hello world</div>
-                <button onClick={close}>Close modal</button>
-            </div>
-        );
+    if (isOpen) return <div style={containerStyle}>{children}</div>;
     else return null;
 }
 

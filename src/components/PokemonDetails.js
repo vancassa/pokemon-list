@@ -38,11 +38,28 @@ function PokemonDetails(props) {
         }
     };
 
+    const [nickname, setNickname] = useState("");
+    const handleInputChange = e => setNickname(e.target.value);
+    const savePokemon = () => {
+        console.log("saving ", nickname);
+        // savePokemon(nickname);
+        closeModal();
+    };
+
     return (
         <div>
             {pokemon && (
                 <div>
-                    <Modal isOpen={isModalOpen} close={closeModal} />
+                    <Modal isOpen={isModalOpen}>
+                        <div>Nickname</div>
+                        <input
+                            type="text"
+                            name="nickname"
+                            value={nickname}
+                            onChange={handleInputChange}
+                        ></input>
+                        <button onClick={savePokemon}>Close modal</button>
+                    </Modal>
                     <div>{pokemon.name}</div>
                     <div>
                         <img src={pokemon.sprites.front_default} alt={pokemon.name} />

@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import debounce from "lodash.debounce";
+
 import { fetchPokemons, setInitialData } from "../store/actions";
 import icon from "../assets/pokeball.png";
 
@@ -11,17 +13,28 @@ import "./AllPokemonList.css";
 function AllPokemonList(props) {
     const dispatch = useDispatch();
     const { allPokemons, myPokemons } = props;
+    const { page, pokemons } = allPokemons;
 
     useEffect(() => {
         dispatch(setInitialData());
-        props.fetchPokemons();
+        props.fetchPokemons(page);
     }, []);
+
+    window.onscroll = debounce(() => {
+        if (
+            window.innerHeight + document.documentElement.scrollTop ===
+            document.documentElement.scrollHeight
+        ) {
+            // Fetch more pokemons
+            props.fetchPokemons(page);
+        }
+    }, 100);
 
     return (
         <div className="all-container">
             <h1 className="all-title">All Pokemons Available</h1>
-            {allPokemons &&
-                Object.keys(allPokemons).map((key, index) => {
+            {pokemons &&
+                Object.keys(pokemons).map((key, index) => {
                     const count = myPokemons[key] ? Object.keys(myPokemons[key]) : 0;
                     return (
                         <div key={index} className="all-entry">

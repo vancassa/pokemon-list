@@ -8,7 +8,7 @@ import {
     GET_INITIAL_DATA
 } from "./actions";
 
-const allPokemonInitialState = {};
+const allPokemonInitialState = { page: 0, pokemons: {} };
 
 const myPokemonInitialState = {
     pokemons: []
@@ -30,11 +30,11 @@ const initialDataReducer = (state = false, action) => {
 const allPokemonsReducer = (state = allPokemonInitialState, action) => {
     switch (action.type) {
         case FETCH_POKEMONS:
-            let result = {};
-            action.payload.forEach(pokemon => {
-                result[pokemon.name] = pokemon.url;
-            });
-            return { ...state, ...result };
+            return {
+                ...state,
+                page: action.payload.page,
+                pokemons: { ...state.pokemons, ...action.payload.pokemons }
+            };
 
         default:
             return state;
@@ -47,7 +47,7 @@ const myPokemonsReducer = (state = myPokemonInitialState, action) => {
             return { ...state };
 
         case ADD_POKEMON:
-            console.log("add poke");
+            console.log("add poke ", action.payload);
             return { ...state, pokemons: [...state.pokemons, action.payload] };
 
         case REMOVE_POKEMON:

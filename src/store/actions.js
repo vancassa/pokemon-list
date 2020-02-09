@@ -21,12 +21,17 @@ export const getInitialData = () => dispatch => {
     });
 };
 
-export const fetchPokemons = () => dispatch => {
-    axios.get("https://pokeapi.co/api/v2/pokemon").then(res => {
+export const fetchPokemons = page => dispatch => {
+    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=${50*page}`).then(res => {
         if (res.data.results) {
+            let pokemons = {};
+            res.data.results.forEach(pokemon => {
+                pokemons[pokemon.name] = pokemon.url;
+            });
+
             dispatch({
                 type: FETCH_POKEMONS,
-                payload: res.data.results
+                payload: { page: page + 1, pokemons }
             });
         }
     });

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
 import { addPokemon } from "../store/actions";
 
+import "./PokemonDetails.css";
 import Modal from "./Modal";
 
 function PokemonDetails(props) {
@@ -12,15 +13,25 @@ function PokemonDetails(props) {
     const { id } = useParams();
 
     const [pokemon, setPokemon] = useState();
+    const [desc, setDescription] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-    const pokemonUrl = allPokemons[id];
+    const pokemonUrl = allPokemons.pokemons[id];
 
     useEffect(() => {
         axios.get(pokemonUrl).then(res => {
             setPokemon(res.data);
+
+            axios
+                .get(`https://pokeapi.co/api/v2/pokemon-species/${res.data.id}/`)
+                .then(response => {
+                    const filterEnglish = response.data.flavor_text_entries.filter(
+                        entry => entry.language.name === "en"
+                    );
+                    setDescription(filterEnglish[0].flavor_text);
+                });
         });
     }, []);
 
@@ -58,16 +69,45 @@ function PokemonDetails(props) {
                         ></input>
                         <button onClick={savePokemon}>Save nickname</button>
                     </Modal>
-                    <div>{pokemon.name}</div>
-                    <div>
-                        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-                    </div>
-                    <div>
-                        {pokemon.types.map((entry, index) => (
-                            <div key={index}>{entry.type.name}</div>
-                        ))}
-                    </div>
-                    <button onClick={catchPokemon}>Catch</button>
+                    <Link to="/">Back</Link>
+
+                    <main>
+                        <div id="info">
+                            <div class="profile_pic">
+                                <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+                            </div>
+                            <div class="profile_title">
+                                <div class="profile_title_icon"></div>
+                                <div class="profile_title_name">
+                                    <span>
+                                        #{pokemon.id} {pokemon.name}
+                                    </span>
+                                    <span>Curious Blob</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                {pokemon.types.map((entry, index) => (
+                                    <div key={index} class="profile_type">
+                                        <span>{entry.type.name}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div class="profile_content">
+                                <span>HT 172</span>
+                                <span>WT 100</span>
+                            </div>
+                            <div class="description">
+                                <div class="description_box">
+                                    <p>{desc}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                    <button type="button" class="catch-btn btn-active" onClick={catchPokemon}>
+                        Catch
+                    </button>
                 </div>
             )}
         </div>

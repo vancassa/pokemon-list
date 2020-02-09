@@ -56,7 +56,7 @@ function PokemonDetails(props) {
     };
 
     return (
-        <div>
+        <div className="container">
             {pokemon && (
                 <div>
                     <Modal isOpen={isModalOpen}>

@@ -15,11 +15,7 @@ function MyPokemonList(props) {
     };
     return (
         <div className="my-pokemon-container">
-            {!myPokemons ? (
-                <div>
-                    You don't have any pokemon yet. <Link to="/">Go catch some!</Link>
-                </div>
-            ) : (
+            {myPokemons && myPokemons.length > 0 ? (
                 <div>
                     <div>You have {myPokemons.length} pokemon(s).</div>
                     <Link to="/">Catch more pokemons!</Link>
@@ -41,6 +37,10 @@ function MyPokemonList(props) {
                             </div>
                         ))}
                     </div>
+                </div>
+            ) : (
+                <div className="my-pokemon_empty">
+                    You don't have any pokemon yet. <Link to="/" className="my-pokemon_empty_link">Go catch some!</Link>
                 </div>
             )}
         </div>

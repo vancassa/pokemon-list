@@ -7,6 +7,7 @@ import { addPokemon } from "../store/actions";
 import { capitalizeFirstChar } from "../helpers";
 
 import "./PokemonDetails.css";
+import "./utility.css";
 import Modal from "./Modal";
 
 function PokemonDetails(props) {
@@ -92,25 +93,32 @@ function PokemonDetails(props) {
 
                     <main>
                         <div id="info">
-                            <div className="profile_pic">
-                                <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-                            </div>
-                            <div className="profile_title">
-                                <div className="profile_title_icon"></div>
-                                <div className="profile_title_name">
-                                    <span>
-                                        #{pokemon.id} {pokemon.name}
-                                    </span>
-                                    <span>Curious Blob</span>
+                            <div className="d-f">
+                                <div className="profile_pic">
+                                    <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                                 </div>
-                            </div>
-
-                            <div className="profile_type_container">
-                                {pokemon.types.map((entry, index) => (
-                                    <div key={index} className={`profile_type ${entry.type.name}`}>
-                                        <span>{entry.type.name}</span>
+                                <div>
+                                    <div className="profile_title" style={{ marginBottom: "10px" }}>
+                                        <div className="profile_title_icon"></div>
+                                        <div className="profile_title_name">
+                                            <span>
+                                                #{pokemon.id} {pokemon.name}
+                                            </span>
+                                            <span>Curious Blob</span>
+                                        </div>
                                     </div>
-                                ))}
+
+                                    <div className="profile_type_container">
+                                        {pokemon.types.map((entry, index) => (
+                                            <div
+                                                key={index}
+                                                className={`profile_type ${entry.type.name}`}
+                                            >
+                                                <span>{entry.type.name}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="profile_content">

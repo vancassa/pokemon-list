@@ -27,12 +27,11 @@ function PokemonDetails(props) {
 
     useEffect(() => {
         axios.get(pokemonUrl).then(res => {
-            setPokemon(res.data);
-
             axios.get(res.data.species.url).then(res2 => {
                 const filterEnglish = res2.data.flavor_text_entries.filter(
                     entry => entry.language.name === "en"
                 );
+                setPokemon(res.data);
                 setDescription(filterEnglish[0].flavor_text);
             });
         });
@@ -78,7 +77,7 @@ function PokemonDetails(props) {
 
     return (
         <div className="container" style={{ overflow: isModalOpen ? "hidden" : "visible" }}>
-            {pokemon && (
+            {pokemon ? (
                 <div>
                     <Modal isOpen={isModalOpen}>
                         <div className="success-modal">
@@ -104,15 +103,17 @@ function PokemonDetails(props) {
                             </button>
                         </div>
                     </Modal>
-                    <Link to="/" className="mt-xl">{'< Back'}</Link>
+                    <Link to="/" className="mt-xl">
+                        {"< Back"}
+                    </Link>
 
                     <main>
                         <div id="info">
-                            <div className="d-f jc-sb">
+                            <div className="d-f jc-sb fw-w">
                                 <div className="profile_pic">
                                     <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                                 </div>
-                                <div>
+                                <div className="ml-l flg-1">
                                     <div className="profile_title" style={{ marginBottom: "10px" }}>
                                         <div className="profile_title_icon"></div>
                                         <div className="profile_title_name">
@@ -123,7 +124,7 @@ function PokemonDetails(props) {
                                         </div>
                                     </div>
 
-                                    <div className="d-f ai-c jc-fe">
+                                    <div className="d-f ai-c fw-w">
                                         {pokemon.types.map((entry, index) => (
                                             <div
                                                 key={index}
@@ -171,6 +172,8 @@ function PokemonDetails(props) {
                         </div>
                     </main>
                 </div>
+            ) : (
+                <div className="empty-container"></div>
             )}
         </div>
     );

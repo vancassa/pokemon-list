@@ -57,7 +57,6 @@ main {
 .profile_title {
     background-color: #ffeace;
     padding: 1rem;
-    margin-left: 1rem;
     border-radius: 10px 0 0 10px;
 }
 
@@ -120,6 +119,7 @@ main {
     border: solid 2px #c0c0c0;
     height: 90%;
     line-height: 1.2rem;
+    min-height: 100px;
 }
 
 .description_box:before,
@@ -144,6 +144,7 @@ main {
 
 .description_box p {
     margin: 0;
+    word-break: break-all;
 }
 
 .info-container {
@@ -215,6 +216,8 @@ main {
     margin-top: 20px;
     padding: 20px 10px;
     box-shadow: 1px 1px 1px 1px rgb(112, 140, 145);
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .message {
@@ -227,120 +230,120 @@ main {
 
 /* POKEMON TYPES */
 .normal {
-	background-color: #A8A878;
-    border: 1px solid #6D6D4E;
-    text-shadow: 1px 1px 1px #6D6D4E, -1px -1px 1px #6D6D4E;
-    box-shadow: -2px -2px 2px 1px #6D6D4E inset;
+    background-color: #a8a878;
+    border: 1px solid #6d6d4e;
+    text-shadow: 1px 1px 1px #6d6d4e, -1px -1px 1px #6d6d4e;
+    box-shadow: -2px -2px 2px 1px #6d6d4e inset;
 }
 
 .fire {
-	background-color: #F08030;
-    border: 1px solid #9C531F;
-    text-shadow: 1px 1px 1px #9C531F, -1px -1px 1px #9C531F;
-    box-shadow: -2px -2px 2px 1px #9C531F inset;
+    background-color: #f08030;
+    border: 1px solid #9c531f;
+    text-shadow: 1px 1px 1px #9c531f, -1px -1px 1px #9c531f;
+    box-shadow: -2px -2px 2px 1px #9c531f inset;
 }
 
 .water {
-	background-color: #6890F0;
-    border: 1px solid #445E9C;
-    text-shadow: 1px 1px 1px #445E9C, -1px -1px 1px #445E9C;
-    box-shadow: -2px -2px 2px 1px #445E9C inset;
+    background-color: #6890f0;
+    border: 1px solid #445e9c;
+    text-shadow: 1px 1px 1px #445e9c, -1px -1px 1px #445e9c;
+    box-shadow: -2px -2px 2px 1px #445e9c inset;
 }
 
 .electric {
-	background-color: #F8D030;
-    border: 1px solid #A1871F;
-    text-shadow: 1px 1px 1px #A1871F, -1px -1px 1px #A1871F;
-    box-shadow: -2px -2px 2px 1px #A1871F inset;
+    background-color: #f8d030;
+    border: 1px solid #a1871f;
+    text-shadow: 1px 1px 1px #a1871f, -1px -1px 1px #a1871f;
+    box-shadow: -2px -2px 2px 1px #a1871f inset;
 }
 
 .grass {
-	background-color: #78C850;
-    border: 1px solid #4E8234;
-    text-shadow: 1px 1px 1px #4E8234, -1px -1px 1px #4E8234;
-    box-shadow: -2px -2px 2px 1px #4E8234 inset;
+    background-color: #78c850;
+    border: 1px solid #4e8234;
+    text-shadow: 1px 1px 1px #4e8234, -1px -1px 1px #4e8234;
+    box-shadow: -2px -2px 2px 1px #4e8234 inset;
 }
 
 .ice {
-	background-color: #98D8D8;
-    border: 1px solid #638D8D;
-    text-shadow: 1px 1px 1px #638D8D, -1px -1px 1px #638D8D;
-    box-shadow: -2px -2px 2px 1px #638D8D inset;
+    background-color: #98d8d8;
+    border: 1px solid #638d8d;
+    text-shadow: 1px 1px 1px #638d8d, -1px -1px 1px #638d8d;
+    box-shadow: -2px -2px 2px 1px #638d8d inset;
 }
 
 .ground {
-	background-color: #E0C068;
-    border: 1px solid #927D44;
-    text-shadow: 1px 1px 1px #927D44, -1px -1px 1px #927D44;
-    box-shadow: -2px -2px 2px 1px #927D44 inset;
+    background-color: #e0c068;
+    border: 1px solid #927d44;
+    text-shadow: 1px 1px 1px #927d44, -1px -1px 1px #927d44;
+    box-shadow: -2px -2px 2px 1px #927d44 inset;
 }
 
 .flying {
-	background-color: #A890F0;
-    border: 1px solid #6D5E9C;
-    text-shadow: 1px 1px 1px #6D5E9C, -1px -1px 1px #6D5E9C;
-    box-shadow: -2px -2px 2px 1px #6D5E9C inset;
+    background-color: #a890f0;
+    border: 1px solid #6d5e9c;
+    text-shadow: 1px 1px 1px #6d5e9c, -1px -1px 1px #6d5e9c;
+    box-shadow: -2px -2px 2px 1px #6d5e9c inset;
 }
 
 .ghost {
-	background-color: #705898;
+    background-color: #705898;
     border: 1px solid #493963;
     text-shadow: 1px 1px 1px #493963, -1px -1px 1px #493963;
     box-shadow: -2px -2px 2px 1px #493963 inset;
 }
 
 .rock {
-	background-color: #B8A038;
+    background-color: #b8a038;
     border: 1px solid #786824;
     text-shadow: 1px 1px 1px #786824, -1px -1px 1px #786824;
     box-shadow: -2px -2px 2px 1px #786824 inset;
 }
 
 .fighting {
-	background-color: #C03028;
-    border: 1px solid #7D1F1A;
-    text-shadow: 1px 1px 1px #7D1F1A, -1px -1px 1px #7D1F1A;
-    box-shadow: -2px -2px 2px 1px #7D1F1A inset;
+    background-color: #c03028;
+    border: 1px solid #7d1f1a;
+    text-shadow: 1px 1px 1px #7d1f1a, -1px -1px 1px #7d1f1a;
+    box-shadow: -2px -2px 2px 1px #7d1f1a inset;
 }
 
 .poison {
-	background-color: #A040A0;
-    border: 1px solid #682A68;
-    text-shadow: 1px 1px 1px #682A68, -1px -1px 1px #682A68;
-    box-shadow: -2px -2px 2px 1px #682A68 inset;
+    background-color: #a040a0;
+    border: 1px solid #682a68;
+    text-shadow: 1px 1px 1px #682a68, -1px -1px 1px #682a68;
+    box-shadow: -2px -2px 2px 1px #682a68 inset;
 }
 
 .psychic {
-	background-color: #F85888;
-    border: 1px solid #A13959;
-    text-shadow: 1px 1px 1px #A13959, -1px -1px 1px #A13959;
-    box-shadow: -2px -2px 2px 1px #A13959 inset;
+    background-color: #f85888;
+    border: 1px solid #a13959;
+    text-shadow: 1px 1px 1px #a13959, -1px -1px 1px #a13959;
+    box-shadow: -2px -2px 2px 1px #a13959 inset;
 }
 
 .bug {
-	background-color: #A8B820;
-    border: 1px solid #6D7815;
-    text-shadow: 1px 1px 1px #6D7815, -1px -1px 1px #6D7815;
-    box-shadow: -2px -2px 2px 1px #6D7815 inset;
+    background-color: #a8b820;
+    border: 1px solid #6d7815;
+    text-shadow: 1px 1px 1px #6d7815, -1px -1px 1px #6d7815;
+    box-shadow: -2px -2px 2px 1px #6d7815 inset;
 }
 
 .dark {
-	background-color: #705848;
-    border: 1px solid #49392F;
-    text-shadow: 1px 1px 1px #49392F, -1px -1px 1px #49392F;
-    box-shadow: -2px -2px 2px 1px #49392F inset;
+    background-color: #705848;
+    border: 1px solid #49392f;
+    text-shadow: 1px 1px 1px #49392f, -1px -1px 1px #49392f;
+    box-shadow: -2px -2px 2px 1px #49392f inset;
 }
 
 .steel {
-	background-color: #B8B8D0;
+    background-color: #b8b8d0;
     border: 1px solid #787887;
     text-shadow: 1px 1px 1px #787887, -1px -1px 1px #787887;
     box-shadow: -2px -2px 2px 1px #787887 inset;
 }
 
 .dragon {
-	background-color: #7038F8;
-    border: 1px solid #4924A1;
-    text-shadow: 1px 1px 1px #4924A1, -1px -1px 1px #4924A1;
-    box-shadow: -2px -2px 2px 1px #4924A1 inset;
+    background-color: #7038f8;
+    border: 1px solid #4924a1;
+    text-shadow: 1px 1px 1px #4924a1, -1px -1px 1px #4924a1;
+    box-shadow: -2px -2px 2px 1px #4924a1 inset;
 }

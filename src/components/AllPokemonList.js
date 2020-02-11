@@ -39,7 +39,7 @@ function AllPokemonList(props) {
 
             <h1 className="allpoke-title">All Pokemons Available</h1>
 
-            {pokemons &&
+            {pokemons && Object.keys(pokemons).length > 0 ? (
                 Object.keys(pokemons).map((key, index) => {
                     const count = myPokemons.pokemons[key] ? myPokemons.pokemons[key].length : 0;
                     return (
@@ -58,7 +58,10 @@ function AllPokemonList(props) {
                             </div>
                         </Link>
                     );
-                })}
+                })
+            ) : (
+                <div className="empty-container" />
+            )}
         </div>
     );
 }

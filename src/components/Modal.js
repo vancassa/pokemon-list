@@ -18,7 +18,7 @@ function Modal(props) {
 
     const modalStyle = {
         backgroundColor: "turquoise",
-        padding: 50,
+        padding: 30,
         margin: 50,
         borderRadius: "10px",
         border: "solid 3px green"

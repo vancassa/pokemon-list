@@ -45,7 +45,9 @@ function AllPokemonList(props) {
                     return (
                         <div key={index} className="allpoke-entry">
                             <Link to={`/pokemon/${key}`}>
-                                <span className="allpoke-entry__name">{key}</span>
+                                <span className="allpoke-entry__name">
+                                    #{index + 1} {key}
+                                </span>
                             </Link>
                             <div className="allpoke-entry__count">
                                 <img

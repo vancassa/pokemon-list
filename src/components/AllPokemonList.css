@@ -9,8 +9,16 @@
 }
 .allpoke-entry {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
+    padding: 10px;
+    border: solid 1px #333;
+    border-radius: 5px;
+}
+
+.allpoke-entry a {
+    text-decoration: none;
 }
 
 .allpoke-entry__name {

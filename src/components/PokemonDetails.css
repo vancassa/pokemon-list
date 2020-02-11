@@ -8,7 +8,7 @@ button {
     width: 100vw;
     max-width: 700px;
     height: calc(100% - 2rem);
-    padding: 1rem;
+    padding: 20px;
 }
 
 main {
@@ -55,15 +55,13 @@ main {
 
 .profile_title {
     background-color: #ffeace;
-    padding: 0.5rem;
-    padding-left: 1rem;
+    padding: 1rem;
     margin-left: 1rem;
     border-radius: 10px 0 0 10px;
 }
 
 .profile_title span {
     display: block;
-    margin-bottom: 20px;
 }
 
 .profile_title span:first-child {
@@ -218,6 +216,15 @@ main {
     box-shadow: 1px 1px 1px 1px rgb(112, 140, 145);
 }
 
+.message {
+    line-height: 1rem;
+}
+
+.message.type--error {
+    color: #bb0000;
+}
+
+/* POKEMON TYPES */
 .normal {
 	background-color: #A8A878;
     border: 1px solid #6D6D4E;

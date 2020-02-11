@@ -107,27 +107,27 @@ function PokemonDetails(props) {
 
                             <div className="profile_type_container">
                                 {pokemon.types.map((entry, index) => (
-                                    <div key={index} className="profile_type">
+                                    <div key={index} className={`profile_type ${entry.type.name}`}>
                                         <span>{entry.type.name}</span>
                                     </div>
                                 ))}
                             </div>
 
                             <div className="profile_content">
-                                {pokemon.moves &&
-                                    pokemon.moves
-                                        .slice(0, Math.min(3, pokemon.moves.length))
-                                        .map((move, index) => {
-                                            return (
-                                                <div key={index}>
-                                                    {capitalizeFirstChar(move.move.name)}
-                                                </div>
-                                            );
-                                        })}
+                                {pokemon.abilities &&
+                                    pokemon.abilities.map((ability, index) => {
+                                        return (
+                                            <div key={index} className="profile_content_abilities">
+                                                {capitalizeFirstChar(ability.ability.name)}
+                                            </div>
+                                        );
+                                    })}
                             </div>
-                            <div className="description">
-                                <div className="description_box">
-                                    <p>{desc}</p>
+                            <div className="description-container">
+                                <div className="description">
+                                    <div className="description_box">
+                                        <p>{desc}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

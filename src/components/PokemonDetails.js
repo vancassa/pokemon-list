@@ -104,7 +104,7 @@ function PokemonDetails(props) {
                             </button>
                         </div>
                     </Modal>
-                    <Link to="/" className="mt-xl">Back</Link>
+                    <Link to="/" className="mt-xl">{'< Back'}</Link>
 
                     <main>
                         <div id="info">

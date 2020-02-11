@@ -12,7 +12,7 @@ import Modal from "./Modal";
 
 function PokemonDetails(props) {
     const history = useHistory();
-    const { allPokemons } = props;
+    const { allPokemons, myPokemons } = props;
     const { id } = useParams();
 
     const [pokemon, setPokemon] = useState();
@@ -53,13 +53,27 @@ function PokemonDetails(props) {
         }, 1000);
     };
 
+    const checkExistence = (pokemon, nickname) => {
+        return (
+            myPokemons.pokemons &&
+            myPokemons.pokemons[pokemon] &&
+            myPokemons.pokemons[pokemon].filter(nick => nick === nickname).length > 0
+        );
+    };
+
     const [nickname, setNickname] = useState("");
+    const [message, setMessage] = useState("");
     const handleInputChange = e => setNickname(e.target.value);
     const savePokemon = () => {
-        //TODO: Check if pokemon name & nickname combi exists
-        props.addPokemon({ name: pokemon.name, nickname: nickname });
-        closeModal();
-        history.push("/mylist");
+        if (checkExistence(pokemon.name, nickname)) {
+            setMessage(
+                `You already have a ${pokemon.name.toUpperCase()} having the same nickname.`
+            );
+        } else {
+            props.addPokemon({ name: pokemon.name, nickname: nickname });
+            closeModal();
+            history.push("/mylist");
+        }
     };
 
     return (
@@ -84,16 +98,17 @@ function PokemonDetails(props) {
                                 onChange={handleInputChange}
                                 className="success-modal__input"
                             ></input>
+                            {message && <p className="message type--error">{message}</p>}
                             <button onClick={savePokemon} className="success-modal__btn">
                                 Save nickname
                             </button>
                         </div>
                     </Modal>
-                    <Link to="/">Back</Link>
+                    <Link to="/" className="mt-xl">Back</Link>
 
                     <main>
                         <div id="info">
-                            <div className="d-f">
+                            <div className="d-f jc-sb">
                                 <div className="profile_pic">
                                     <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                                 </div>
@@ -104,11 +119,11 @@ function PokemonDetails(props) {
                                             <span>
                                                 #{pokemon.id} {pokemon.name}
                                             </span>
-                                            <span>Curious Blob</span>
+                                            <span>Shy Pokemon</span>
                                         </div>
                                     </div>
 
-                                    <div className="profile_type_container">
+                                    <div className="d-f ai-c jc-fe">
                                         {pokemon.types.map((entry, index) => (
                                             <div
                                                 key={index}

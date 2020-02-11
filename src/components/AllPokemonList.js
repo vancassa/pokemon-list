@@ -43,12 +43,10 @@ function AllPokemonList(props) {
                 Object.keys(pokemons).map((key, index) => {
                     const count = myPokemons.pokemons[key] ? myPokemons.pokemons[key].length : 0;
                     return (
-                        <div key={index} className="allpoke-entry">
-                            <Link to={`/pokemon/${key}`}>
-                                <span className="allpoke-entry__name">
-                                    #{index + 1} {key}
-                                </span>
-                            </Link>
+                        <Link to={`/pokemon/${key}`} key={index} className="allpoke-entry">
+                            <span className="allpoke-entry__name">
+                                #{index + 1} {key}
+                            </span>
                             <div className="allpoke-entry__count">
                                 <img
                                     className="allpoke-entry__icon"
@@ -58,7 +56,7 @@ function AllPokemonList(props) {
                                 />
                                 <span>{count}</span>
                             </div>
-                        </div>
+                        </Link>
                     );
                 })}
         </div>

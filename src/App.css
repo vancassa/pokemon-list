@@ -8,7 +8,12 @@
     height: 100vh;
     
 }
- 
-a:visited {
-    color: blue;
+
+a, a:visited {
+    color: #6490b3;
+}
+
+button {
+    /* background-color: grey; */
+    box-shadow: 1px 1px 1px #ccc;
 }

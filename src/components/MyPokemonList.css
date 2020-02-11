@@ -26,6 +26,8 @@
     background-color: antiquewhite;
     border: solid 1px pink;
     cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 1px 3px 1px 1px #ccc, -1px 3px 1px 1px #ccc;
 }
 
 .my-pokemon_entry {

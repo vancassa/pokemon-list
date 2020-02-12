@@ -21,7 +21,7 @@ describe("Test UI components and data", function() {
         cy.get("[data-testid=myPokemonLink]")
             .should("have.text", "Go catch some!")
             .should("have.attr", "href")
-            .and("equal", "/");
+            .and("equal", "/pokemon-list/");
     });
 
     it("Pokemon details page components", function() {

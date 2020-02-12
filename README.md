@@ -42,7 +42,7 @@ Run:
 yarn cypress:open
 ```
 
-And choose one of the test cases to see Cypress running in action.
+And choose one of the test cases to see Cypress running in action. It's fun to see your browser running by itself :)
 
 ### Building for deployment
 

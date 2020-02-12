@@ -101,8 +101,16 @@ main {
 .profile_content {
     margin: 20px 0;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    /* justify-content: space-between; */
+    /* flex-wrap: wrap; */
+}
+
+.profile_content_move {
+    margin: 3px;
+    padding: 5px;
+    background: #f7fbca;
 }
 
 .description {
@@ -144,7 +152,7 @@ main {
 
 .description_box p {
     margin: 0;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .info-container {

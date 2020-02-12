@@ -16,6 +16,7 @@ function PokemonDetails(props) {
     const { id } = useParams();
 
     const [pokemon, setPokemon] = useState();
+    const [moves, setMoves] = useState([]);
     const [isCatching, setIsCatching] = useState(false);
     const [isFailed, setIsFailed] = useState(false);
     const [desc, setDescription] = useState("");
@@ -28,11 +29,25 @@ function PokemonDetails(props) {
     useEffect(() => {
         axios.get(pokemonUrl).then(res => {
             axios.get(res.data.species.url).then(res2 => {
+                setPokemon(res.data);
+
+                // Get first english description
                 const filterEnglish = res2.data.flavor_text_entries.filter(
                     entry => entry.language.name === "en"
                 );
-                setPokemon(res.data);
                 setDescription(filterEnglish[0].flavor_text);
+
+                // Get random moves
+                const pokemonMoves = res.data.moves;
+                const randomIdx =
+                    pokemonMoves.length > 4
+                        ? parseInt(Math.random() * (pokemonMoves.length - 4))
+                        : parseInt(Math.random() * pokemonMoves.length);
+                const randomMoves = [];
+                for (let i = randomIdx; i < Math.min(randomIdx + 4, pokemonMoves.length); i++) {
+                    randomMoves.push(pokemonMoves[i].move.name);
+                }
+                setMoves(randomMoves);
             });
         });
     }, []);
@@ -109,7 +124,7 @@ function PokemonDetails(props) {
 
                     <main>
                         <div id="info">
-                            <div className="d-f jc-sb fw-w">
+                            <div className="d-f jc-sb">
                                 <div className="profile_pic">
                                     <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                                 </div>
@@ -120,7 +135,7 @@ function PokemonDetails(props) {
                                             <span>
                                                 #{pokemon.id} {pokemon.name}
                                             </span>
-                                            <span>Shy Pokemon</span>
+                                            {/* <span>Shy Pokemon</span> */}
                                         </div>
                                     </div>
 
@@ -136,13 +151,12 @@ function PokemonDetails(props) {
                                     </div>
                                 </div>
                             </div>
-
                             <div className="profile_content">
-                                {pokemon.abilities &&
-                                    pokemon.abilities.map((ability, index) => {
+                                {moves &&
+                                    moves.map((move, index) => {
                                         return (
-                                            <div key={index} className="profile_content_abilities">
-                                                {capitalizeFirstChar(ability.ability.name)}
+                                            <div key={index} className="profile_content_move">
+                                                {capitalizeFirstChar(move)}
                                             </div>
                                         );
                                     })}

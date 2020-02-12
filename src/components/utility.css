@@ -1,47 +1,36 @@
 .d-f {
     display: flex;
 }
-
 .jc-sb {
     justify-content: space-between;
 }
-
 .jc-fe {
     justify-content: flex-end;
 }
-
 .flg-1 {
     flex-grow: 1;
 }
-
 .fw-w {
     flex-wrap: wrap;
 }
-
 .ai-c {
     align-items: center;
 }
-
 .mt-m {
     margin-top: 16px;
 }
-
 .mt-l {
     margin-top: 20px;
 }
-
 .mt-xl {
     margin-top: 24px;
 }
-
 .ml-m {
     margin-left: 16px;
 }
-
 .ml-l {
     margin-left: 20px;
 }
-
 .ml-xl {
     margin-left: 24px;
 }

@@ -16,27 +16,23 @@ function AllPokemonList(props) {
     const { allPokemons, myPokemons } = props;
     const { page, pokemons } = allPokemons;
 
-    const scrollListener = debounce(() => {
+    useEffect(() => {
+        dispatch(setInitialData());
+        if (page === 0) props.fetchPokemons(page);
+    }, []);
+
+    window.onscroll = debounce(() => {
         if (
             window.innerHeight + document.documentElement.scrollTop >
             document.documentElement.scrollHeight - 500
         ) {
             // Fetch more pokemons
-            props.fetchPokemons(page);
+            const url = window.location.href;
+            if (url.slice(url.lastIndexOf("/"), url.length - 1) === "") {
+                props.fetchPokemons(page);
+            }
         }
-    }, 500);
-
-    useEffect(() => {
-        dispatch(setInitialData());
-        if (page === 0) props.fetchPokemons(page);
-
-        // Scroll listener
-        window.addEventListener("scroll", scrollListener);
-
-        return () => {
-            window.removeEventListener("scroll", scrollListener);
-        };
-    }, []);
+    }, 100);
 
     return (
         <div className="allpoke-container" data-testid="allPokemonContainer">

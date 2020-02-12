@@ -20,7 +20,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "CI=true react-scripts test --env=jsdom && yarn cypress:run",
+        "test": "react-scripts test CI=true --env=jsdom && yarn cypress:run",
         "cypress:open": "cypress open",
         "cypress:run": "cypress run --spec 'tests/cypress/integration/*'",
         "predeploy": "yarn build",

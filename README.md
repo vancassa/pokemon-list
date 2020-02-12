@@ -4,7 +4,7 @@ This project is showing the list of Pokemon available from [Pokemon API](https:/
 
 This project was built using **React**, **Redux** for state management, **React Router** for router management, **Cypress** for integration testing.
 
-[Access the demo here](https://vancassa.github.io/pokemon-list/)
+#### [Access the demo here](https://vancassa.github.io/pokemon-list/)
 
 ## Getting Started
 

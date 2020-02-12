@@ -172,7 +172,8 @@ function PokemonDetails(props) {
                         <div className="catch-btn-container">
                             <button
                                 type="button"
-                                className="catch-btn btn-active"
+                                className={`catch-btn btn-active ${isFailed &&
+                                    "type--failed"} ${isModalOpen && "type--success"}`}
                                 disabled={isCatching}
                                 onClick={catchPokemon}
                                 style={{ color: isFailed && !isCatching && "crimson" }}

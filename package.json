@@ -20,10 +20,10 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test CI=true --env=jsdom && yarn cypress:run",
+        "test": "cross-env CI=true react-scripts test --env=jsdom && npm run cypress:run",
         "cypress:open": "cypress open",
         "cypress:run": "cypress run --spec 'tests/cypress/integration/*'",
-        "predeploy": "yarn build",
+        "predeploy": "npm run build",
         "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
@@ -42,6 +42,7 @@
         ]
     },
     "devDependencies": {
+        "cross-env": "^7.0.0",
         "cypress": "^4.0.1",
         "gh-pages": "^2.2.0"
     }

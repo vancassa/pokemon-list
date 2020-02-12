@@ -8,7 +8,6 @@ import "./MyPokemonList.css";
 import MyPokemonEntry from "../components/MyPokemonEntry";
 
 function MyPokemonList(props) {
-    console.log("props.myPokemons :", props.myPokemons);
     const { myPokemons } = props;
     const { pokemons } = myPokemons;
 
@@ -20,7 +19,7 @@ function MyPokemonList(props) {
             {pokemons && Object.keys(pokemons).length > 0 ? (
                 <div>
                     <div className="my-pokemon_title">You have {myPokemons.total} pokemon(s).</div>
-                    <Link to="/" className="my-pokemon_link">
+                    <Link to="/" className="my-pokemon_link" data-testid="myPokemonCatchMore">
                         Catch more pokemons!
                     </Link>
                     <div className="my-pokemon_list">
@@ -39,17 +38,13 @@ function MyPokemonList(props) {
                                     })}
                                 </div>
                             );
-
-                            // pokemon.map(nickname => {
-                            //     console.log('nickname :', nickname);
-                            // })
                         })}
                     </div>
                 </div>
             ) : (
-                <div className="my-pokemon_empty">
+                <div className="my-pokemon_empty" data-testid="myPokemonEmpty">
                     You don't have any pokemon yet.{" "}
-                    <Link to="/" className="my-pokemon_link">
+                    <Link to="/" className="my-pokemon_link" data-testid="myPokemonLink">
                         Go catch some!
                     </Link>
                 </div>

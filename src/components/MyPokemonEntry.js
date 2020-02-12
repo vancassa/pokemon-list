@@ -5,7 +5,7 @@ function MyPokemonEntry(props) {
 
     return (
         <div className="my-pokemon_entry">
-            <div className="my-pokemon_entry_name">
+            <div className="my-pokemon_entry_name" data-testid="myPokemonName">
                 {nickname ? (
                     <span>
                         {nickname} ({pokemonKey})
@@ -17,6 +17,7 @@ function MyPokemonEntry(props) {
             <button
                 className="my-pokemon-entry_release"
                 onClick={() => releasePokemon(pokemonKey, nickname)}
+                data-testid="myPokemonRelease"
             >
                 Release
             </button>

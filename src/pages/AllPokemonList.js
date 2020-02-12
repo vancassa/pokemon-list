@@ -32,7 +32,7 @@ function AllPokemonList(props) {
     }, 100);
 
     return (
-        <div className="allpoke-container">
+        <div className="allpoke-container" data-testid="allPokemonContainer">
             <Link to={`/mylist`} className="allpoke-link" data-testid="linkToMyList">
                 My pokemons ({myPokemons.total})
                 <img src={icon} alt="Bag icon" className="allpoke-link__icon" />

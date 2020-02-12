@@ -111,9 +111,14 @@ function PokemonDetails(props) {
                                 value={nickname}
                                 onChange={handleInputChange}
                                 className="success-modal__input"
+                                data-testid="pokemonSuccessNickname"
                             ></input>
-                            {message && <p className="message type--error">{message}</p>}
-                            <button onClick={savePokemon} className="success-modal__btn">
+                            {message && <p className="message type--error" data-testid="pokemonNicknameError">{message}</p>}
+                            <button
+                                onClick={savePokemon}
+                                className="success-modal__btn"
+                                data-testid="pokemonSaveNickname"
+                            >
                                 Save nickname
                             </button>
                         </div>
@@ -125,17 +130,19 @@ function PokemonDetails(props) {
                     <main>
                         <div id="info">
                             <div className="d-f jc-sb">
-                                <div className="profile_pic">
+                                <div className="profile_pic" data-testid="pokemonProfilePic">
                                     <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                                 </div>
                                 <div className="ml-l flg-1">
                                     <div className="profile_title" style={{ marginBottom: "10px" }}>
                                         <div className="profile_title_icon"></div>
-                                        <div className="profile_title_name">
+                                        <div
+                                            className="profile_title_name"
+                                            data-testid="pokemonProfileName"
+                                        >
                                             <span>
                                                 #{pokemon.id} {pokemon.name}
                                             </span>
-                                            {/* <span>Shy Pokemon</span> */}
                                         </div>
                                     </div>
 
@@ -144,6 +151,7 @@ function PokemonDetails(props) {
                                             <div
                                                 key={index}
                                                 className={`profile_type ${entry.type.name}`}
+                                                data-testid="pokemonProfileType"
                                             >
                                                 <span>{entry.type.name}</span>
                                             </div>
@@ -151,11 +159,15 @@ function PokemonDetails(props) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="profile_content">
+                            <div className="profile_content" data-testid="pokemonMoves">
                                 {moves &&
                                     moves.map((move, index) => {
                                         return (
-                                            <div key={index} className="profile_content_move">
+                                            <div
+                                                key={index}
+                                                className="profile_content_move"
+                                                data-testid="pokemonMove"
+                                            >
                                                 {capitalizeFirstChar(move)}
                                             </div>
                                         );
@@ -163,7 +175,10 @@ function PokemonDetails(props) {
                             </div>
                             <div className="description-container">
                                 <div className="description">
-                                    <div className="description_box">
+                                    <div
+                                        className="description_box"
+                                        data-testid="pokemonDescription"
+                                    >
                                         <p>{desc}</p>
                                     </div>
                                 </div>
@@ -177,6 +192,7 @@ function PokemonDetails(props) {
                                 disabled={isCatching}
                                 onClick={catchPokemon}
                                 style={{ color: isFailed && !isCatching && "crimson" }}
+                                data-testid="pokemonCatchButton"
                             >
                                 {isCatching
                                     ? "Trying to catch..."

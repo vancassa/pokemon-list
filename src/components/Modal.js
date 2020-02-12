@@ -21,7 +21,8 @@ function Modal(props) {
         padding: 30,
         margin: 50,
         borderRadius: "10px",
-        border: "solid 3px green"
+        border: "solid 3px green",
+        maxWidth: '400px'
     };
 
     if (isOpen)

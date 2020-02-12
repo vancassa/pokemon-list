@@ -16,12 +16,7 @@ function AllPokemonList(props) {
     const { allPokemons, myPokemons } = props;
     const { page, pokemons } = allPokemons;
 
-    useEffect(() => {
-        dispatch(setInitialData());
-        if (page === 0) props.fetchPokemons(page);
-    }, []);
-
-    window.onscroll = debounce(() => {
+    const scrollListener = debounce(() => {
         if (
             window.innerHeight + document.documentElement.scrollTop >
             document.documentElement.scrollHeight - 500
@@ -29,7 +24,19 @@ function AllPokemonList(props) {
             // Fetch more pokemons
             props.fetchPokemons(page);
         }
-    }, 100);
+    }, 500);
+
+    useEffect(() => {
+        dispatch(setInitialData());
+        if (page === 0) props.fetchPokemons(page);
+
+        // Scroll listener
+        window.addEventListener("scroll", scrollListener);
+
+        return () => {
+            window.removeEventListener("scroll", scrollListener);
+        };
+    }, []);
 
     return (
         <div className="allpoke-container" data-testid="allPokemonContainer">

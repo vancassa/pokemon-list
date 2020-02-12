@@ -18,7 +18,7 @@ function AllPokemonList(props) {
 
     useEffect(() => {
         dispatch(setInitialData());
-        props.fetchPokemons(page);
+        if (page === 0) props.fetchPokemons(page);
     }, []);
 
     window.onscroll = debounce(() => {

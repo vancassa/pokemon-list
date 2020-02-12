@@ -5,9 +5,9 @@ import store from "./store";
 
 import "./App.css";
 
-import AllPokemonList from "./components/AllPokemonList";
-import MyPokemonList from "./components/MyPokemonList";
-import PokemonDetails from "./components/PokemonDetails";
+import AllPokemonList from "./pages/AllPokemonList";
+import MyPokemonList from "./pages/MyPokemonList";
+import PokemonDetails from "./pages/PokemonDetails";
 import AuthorizedRoute from "./components/AuthorizedRoute";
 
 function App() {

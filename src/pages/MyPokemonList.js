@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { removePokemon } from "../store/actions";
 
 import "./MyPokemonList.css";
+import MyPokemonEntry from "../components/MyPokemonEntry";
 
 function MyPokemonList(props) {
     console.log("props.myPokemons :", props.myPokemons);
@@ -28,25 +29,12 @@ function MyPokemonList(props) {
                                 <div key={index}>
                                     {pokemons[pokemonKey].map((nickname, idx) => {
                                         return (
-                                            <div key={idx} className="my-pokemon_entry">
-                                                <div className="my-pokemon_entry_name">
-                                                    {nickname ? (
-                                                        <span>
-                                                            {nickname} ({pokemonKey})
-                                                        </span>
-                                                    ) : (
-                                                        <span>{pokemonKey}</span>
-                                                    )}
-                                                </div>
-                                                <button
-                                                    className="my-pokemon-entry_release"
-                                                    onClick={() =>
-                                                        releasePokemon(pokemonKey, nickname)
-                                                    }
-                                                >
-                                                    Release
-                                                </button>
-                                            </div>
+                                            <MyPokemonEntry
+                                                key={idx}
+                                                nickname={nickname}
+                                                pokemonKey={pokemonKey}
+                                                releasePokemon={releasePokemon}
+                                            />
                                         );
                                     })}
                                 </div>

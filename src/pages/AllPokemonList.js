@@ -9,6 +9,7 @@ import { fetchPokemons, setInitialData } from "../store/actions";
 import icon from "../assets/pokeball.png";
 
 import "./AllPokemonList.css";
+import PokemonEntry from "../components/PokemonEntry.js";
 
 function AllPokemonList(props) {
     const dispatch = useDispatch();
@@ -32,31 +33,26 @@ function AllPokemonList(props) {
 
     return (
         <div className="allpoke-container">
-            <Link to={`/mylist`} className="allpoke-link">
+            <Link to={`/mylist`} className="allpoke-link" data-testid="linkToMyList">
                 My pokemons ({myPokemons.total})
                 <img src={icon} alt="Bag icon" className="allpoke-link__icon" />
             </Link>
 
-            <h1 className="allpoke-title">All Pokemons Available</h1>
+            <h1 className="allpoke-title" data-testid="allPokemonTitle">
+                All Pokemons Available
+            </h1>
 
             {pokemons && Object.keys(pokemons).length > 0 ? (
                 Object.keys(pokemons).map((key, index) => {
                     const count = myPokemons.pokemons[key] ? myPokemons.pokemons[key].length : 0;
                     return (
-                        <Link to={`/pokemon/${key}`} key={index} className="allpoke-entry">
-                            <span className="allpoke-entry__name">
-                                #{index + 1} {key}
-                            </span>
-                            <div className="allpoke-entry__count">
-                                <img
-                                    className="allpoke-entry__icon"
-                                    src={icon}
-                                    alt="pokeball"
-                                    style={{ width: 20, height: 20 }}
-                                />
-                                <span>{count}</span>
-                            </div>
-                        </Link>
+                        <PokemonEntry
+                            key={index}
+                            index={index}
+                            pokemonKey={key}
+                            iconSrc={icon}
+                            pokemonCount={count}
+                        />
                     );
                 })
             ) : (
@@ -65,11 +61,6 @@ function AllPokemonList(props) {
         </div>
     );
 }
-
-AllPokemonList.propTypes = {
-    fetchPokemons: PropTypes.func.isRequired,
-    pokemons: PropTypes.array.isRequired
-};
 
 const mapStateToProps = state => ({
     allPokemons: state.allPokemons,

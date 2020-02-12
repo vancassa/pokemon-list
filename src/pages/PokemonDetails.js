@@ -7,8 +7,8 @@ import { addPokemon } from "../store/actions";
 import { capitalizeFirstChar } from "../helpers";
 
 import "./PokemonDetails.css";
-import "./utility.css";
-import Modal from "./Modal";
+import "../utility.css";
+import Modal from "../components/Modal";
 
 function PokemonDetails(props) {
     const history = useHistory();

@@ -1,13 +1,15 @@
 .my-pokemon-container {
     padding: 20px;
+    width: 100%;
 }
 
 .my-pokemon_title {
     margin: 20px 0;
+    text-align: center;
 }
 
 .my-pokemon_list {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .my-pokemon_empty {
@@ -28,6 +30,7 @@
     cursor: pointer;
     border-radius: 10px;
     box-shadow: 1px 3px 1px 1px #ccc, -1px 3px 1px 1px #ccc;
+    text-align: center;
 }
 
 .my-pokemon_entry {

@@ -14,7 +14,7 @@ function App() {
     return (
         <Provider store={store}>
             <div className="app">
-                <Router>
+                <Router basename={"/pokemon-list"}>
                     <Switch>
                         <Route exact path="/">
                             <AllPokemonList />

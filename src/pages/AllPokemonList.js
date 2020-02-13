@@ -28,6 +28,7 @@ function AllPokemonList(props) {
         ) {
             // Fetch more pokemons
             const url = window.location.href;
+            // Only fetch on the main page
             if (url.slice(url.lastIndexOf("/"), url.length - 1) === "") {
                 props.fetchPokemons(page);
             }

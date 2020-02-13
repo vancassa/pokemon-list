@@ -18,11 +18,11 @@ function MyPokemonList(props) {
         <div className="my-pokemon-container">
             {pokemons && Object.keys(pokemons).length > 0 ? (
                 <div>
-                    <div className="my-pokemon_title">You have {myPokemons.total} pokemon(s).</div>
-                    <Link to="/" className="my-pokemon_link" data-testid="myPokemonCatchMore">
+                    <div className="my-pokemon-title">You have {myPokemons.total} pokemon(s).</div>
+                    <Link to="/" className="my-pokemon-link" data-testid="myPokemonCatchMore">
                         Catch more pokemons!
                     </Link>
-                    <div className="my-pokemon_list">
+                    <div className="my-pokemon-list">
                         {Object.keys(pokemons).map((pokemonKey, index) => {
                             return (
                                 <div key={index}>
@@ -42,9 +42,9 @@ function MyPokemonList(props) {
                     </div>
                 </div>
             ) : (
-                <div className="my-pokemon_empty" data-testid="myPokemonEmpty">
+                <div className="my-pokemon-empty" data-testid="myPokemonEmpty">
                     You don't have any pokemon yet.{" "}
-                    <Link to="/" className="my-pokemon_link" data-testid="myPokemonLink">
+                    <Link to="/" className="my-pokemon-link" data-testid="myPokemonLink">
                         Go catch some!
                     </Link>
                 </div>

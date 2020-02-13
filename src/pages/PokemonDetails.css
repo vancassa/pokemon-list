@@ -4,7 +4,7 @@ button {
     font-family: "Press Start 2P", "Karla", sans-serif;
 }
 
-.container {
+.profile-container {
     width: 100vw;
     max-width: 700px;
     height: calc(100% - 40px);
@@ -25,7 +25,7 @@ main {
     display: flex;
 }
 
-.profile_pic {
+.profile-pic {
     position: relative;
     grid-column: auto;
     align-self: start;
@@ -38,7 +38,7 @@ main {
     height: 100px;
 }
 
-.profile_pic:after {
+.profile-pic:after {
     content: "";
     position: absolute;
     top: 3%;
@@ -50,38 +50,32 @@ main {
     display: block;
 }
 
-.profile_pic img {
+.profile-pic img {
     width: 100px;
 }
 
-.profile_title {
+.profile-title {
     background-color: #ffeace;
     padding: 1rem;
     border-radius: 10px 0 0 10px;
 }
 
-.profile_title span {
+.profile-title span {
     display: block;
 }
 
-.profile_title span:first-child {
+.profile-title span:first-child {
     margin-bottom: 1rem;
     text-transform: uppercase;
 }
 
-.profile_details {
-    margin-top: 1rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-}
-
-.profile_type_container {
+.profile-type-container {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-.profile_type {
+.profile-type {
     background-color: rgb(233, 233, 2);
     border: solid 1px rgb(173, 172, 170);
     display: inline-block;
@@ -98,7 +92,7 @@ main {
     justify-self: start;
 }
 
-.profile_content {
+.profile-content {
     margin: 20px 0;
     display: flex;
     flex-direction: column;
@@ -107,7 +101,7 @@ main {
     /* flex-wrap: wrap; */
 }
 
-.profile_content_move {
+.profile-content__move {
     margin: 3px;
     padding: 5px;
     background: #f7fbca;
@@ -120,7 +114,7 @@ main {
     border: solid 3px #78a2c3;
 }
 
-.description_box {
+.description-box {
     position: relative;
     background-color: white;
     padding: 0.5rem;
@@ -130,8 +124,8 @@ main {
     min-height: 100px;
 }
 
-.description_box:before,
-.description_box:after {
+.description-box:before,
+.description-box:after {
     content: "";
     position: absolute;
     width: 16px;
@@ -140,28 +134,22 @@ main {
     border-radius: 7px;
 }
 
-.description_box:before {
+.description-box:before {
     top: 0;
     left: -1.75rem;
 }
 
-.description_box:after {
+.description-box:after {
     top: 0;
     right: -1.75rem;
 }
 
-.description_box p {
+.description-box p {
     margin: 0;
     word-break: break-word;
 }
 
-.info-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-#info {
+.info {
     height: 100%;
     display: flex;
     flex-direction: column;

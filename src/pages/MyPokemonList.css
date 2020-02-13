@@ -4,16 +4,16 @@
     max-width: 500px;
 }
 
-.my-pokemon_title {
+.my-pokemon-title {
     margin: 20px 0;
     text-align: center;
 }
 
-.my-pokemon_list {
+.my-pokemon-list {
     margin-top: 30px;
 }
 
-.my-pokemon_empty {
+.my-pokemon-empty {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,7 +22,7 @@
     text-align: center;
 }
 
-.my-pokemon_link {
+.my-pokemon-link {
     display: block;
     margin: 20px 0;
     padding: 20px;
@@ -34,19 +34,19 @@
     text-align: center;
 }
 
-.my-pokemon_entry {
+.my-pokemon-entry {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
 }
 
-.my-pokemon_entry_name {
+.my-pokemon-entry__name {
     word-break: break-word;
     text-transform: uppercase;
     line-height: 1rem;
 }
 
-.my-pokemon-entry_release {
+.my-pokemon-entry__release {
     padding: 10px;
 }

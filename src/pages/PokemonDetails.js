@@ -91,7 +91,11 @@ function PokemonDetails(props) {
     };
 
     return (
-        <div className="container" style={{ overflow: isModalOpen ? "hidden" : "visible" }}>
+        <div
+            className="profile-container"
+            style={{ overflow: isModalOpen ? "hidden" : "visible" }}
+            data-testid="profileContainer"
+        >
             {pokemon ? (
                 <div>
                     <Modal isOpen={isModalOpen}>
@@ -113,7 +117,14 @@ function PokemonDetails(props) {
                                 className="success-modal__input"
                                 data-testid="pokemonSuccessNickname"
                             ></input>
-                            {message && <p className="message type--error" data-testid="pokemonNicknameError">{message}</p>}
+                            {message && (
+                                <p
+                                    className="message type--error"
+                                    data-testid="pokemonNicknameError"
+                                >
+                                    {message}
+                                </p>
+                            )}
                             <button
                                 onClick={savePokemon}
                                 className="success-modal__btn"
@@ -128,18 +139,14 @@ function PokemonDetails(props) {
                     </Link>
 
                     <main>
-                        <div id="info">
+                        <div className="info">
                             <div className="d-f jc-sb">
-                                <div className="profile_pic" data-testid="pokemonProfilePic">
+                                <div className="profile-pic" data-testid="pokemonProfilePic">
                                     <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                                 </div>
                                 <div className="ml-l flg-1">
-                                    <div className="profile_title" style={{ marginBottom: "10px" }}>
-                                        <div className="profile_title_icon"></div>
-                                        <div
-                                            className="profile_title_name"
-                                            data-testid="pokemonProfileName"
-                                        >
+                                    <div className="profile-title" style={{ marginBottom: "10px" }}>
+                                        <div data-testid="pokemonProfileName">
                                             <span>
                                                 #{pokemon.id} {pokemon.name}
                                             </span>
@@ -150,7 +157,7 @@ function PokemonDetails(props) {
                                         {pokemon.types.map((entry, index) => (
                                             <div
                                                 key={index}
-                                                className={`profile_type ${entry.type.name}`}
+                                                className={`profile-type ${entry.type.name}`}
                                                 data-testid="pokemonProfileType"
                                             >
                                                 <span>{entry.type.name}</span>
@@ -159,13 +166,13 @@ function PokemonDetails(props) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="profile_content" data-testid="pokemonMoves">
+                            <div className="profile-content" data-testid="pokemonMoves">
                                 {moves &&
                                     moves.map((move, index) => {
                                         return (
                                             <div
                                                 key={index}
-                                                className="profile_content_move"
+                                                className="profile-content__move"
                                                 data-testid="pokemonMove"
                                             >
                                                 {capitalizeFirstChar(move)}
@@ -176,7 +183,7 @@ function PokemonDetails(props) {
                             <div className="description-container">
                                 <div className="description">
                                     <div
-                                        className="description_box"
+                                        className="description-box"
                                         data-testid="pokemonDescription"
                                     >
                                         <p>{desc}</p>

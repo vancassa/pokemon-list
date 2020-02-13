@@ -40,7 +40,7 @@ describe("Test UI components and data", function() {
         );
 
         // Type exist
-        cy.get(".container")
+        cy.get("[data-testid=profileContainer]")
             .find("[data-testid=pokemonProfileType]")
             .each($el => expect($el[0].innerHTML).to.not.be.empty);
 
